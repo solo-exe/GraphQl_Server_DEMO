@@ -2,19 +2,22 @@
   "name": "GraphQL_Server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "hapi": "^18.1.0",
+    "mongoose": "^7.0.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
