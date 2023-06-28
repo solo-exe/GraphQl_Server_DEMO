@@ -1,7 +1,7 @@
 require('dotenv').config();
 const Hapi = require('hapi');
-const db = require('./src2/models/db')
-const Painting = require('./src2/models/Painting')
+const db = require('./src/models/db')
+const Painting = require('./src/models/Painting')
 const { ApolloServer } = require('apollo-server-hapi')
 console.log(ApolloServer);
 
