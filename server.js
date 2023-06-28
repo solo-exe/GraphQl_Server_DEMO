@@ -1,10 +1,13 @@
-const Hapi = require('hapi');
 require('dotenv').config();
+const Hapi = require('hapi');
 const db = require('./src2/models/db')
 const Painting = require('./src2/models/Painting')
+const { ApolloServer } = require('apollo-server-hapi')
+console.log(ApolloServer);
 
 const init = async () => {
     // Init Server and Connnection
+
     const server = new Hapi.Server({
         port: 3000,
         host: 'localhost'
@@ -15,7 +18,6 @@ const init = async () => {
         method: 'GET',
         path: '/',
         handler: (req, res) => {
-            console.log(req);
             return ('HELLO WORLD')
         }
     });
@@ -41,6 +43,32 @@ const init = async () => {
         }
     });
 
+
+    await server.register({
+        plugin: graphiqlHapi,
+        options: {
+            path: '/graphiql',
+            graphiqlOptions: {
+                endpointURL: 'graphql'
+            },
+            route: {
+                cors: true
+            }
+        }
+    })
+
+    await server.register({
+        plugin: graphqlHapi,
+        options: {
+            path: 'graphql',
+            graphqlOptions: {
+                schema
+            },
+            route: {
+                cors: true
+            }
+        }
+    })
     await server.start()
     console.log(`Server started at: ${server.info.uri}`);
 }

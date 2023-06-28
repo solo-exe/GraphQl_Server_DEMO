@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const url = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}.mongodb.net/?retryWrites=true&w=majority `
-
-mongoose.connect('mongodb://localhost:27017', {
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}.mongodb.net/acme?retryWrites=true&w=majority `
+const local = 'mongodb://localhost:27017'
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
